@@ -6,7 +6,7 @@ export const login = async (contact, password) => {
   try {
     const res = await axios({
       method: 'post',
-      url: 'http://127.0.0.1:3000/api/v1/users/login',
+      url: '/api/v1/users/login',
       data: {
         phoneNumber: contact,
         password
@@ -25,11 +25,10 @@ export const login = async (contact, password) => {
 };
 
 export const logout = async () => {
-  console.log('clicked');
   try {
     const res = await axios({
       method: 'get',
-      url: 'http://127.0.0.1:3000/api/v1/users/logout'
+      url: '/api/v1/users/logout'
     });
 
     if (res.data.status === 'success') location.assign('/signin');
@@ -42,7 +41,7 @@ export const setMarket = async mkid => {
   try {
     const res = await axios({
       method: 'post',
-      url: `http://127.0.0.1:3000/getmarketid/${mkid}`
+      url: `/getmarketid/${mkid}`
     });
 
     if (res.data.status === 'success') {
@@ -57,7 +56,7 @@ export const sendEntries = async (author, entries, exits, market) => {
   try {
     const res = await axios({
       method: 'post',
-      url: `http://127.0.0.1:3000/api/v1/entries`,
+      url: `/api/v1/entries`,
       data: {
         author,
         entries,
@@ -90,7 +89,7 @@ export const sendProductinfo = async (
   try {
     const res = await axios({
       method: 'post',
-      url: 'http://127.0.0.1:3000/api/v1/products',
+      url: '/api/v1/products',
       data: {
         name,
         price,
@@ -126,7 +125,7 @@ export const sendUserinfo = async (
   try {
     const res = await axios({
       method: 'post',
-      url: `http://127.0.0.1:3000/api/v1/users/signup`,
+      url: `/api/v1/users/signup`,
       data: {
         name,
         phoneNumber,
