@@ -1,0 +1,179 @@
+body {
+  font-family: 'Roboto', sans-serif;
+}
+
+div.container-fluid {
+  padding: 0;
+}
+
+table.table.table-bordered td {
+  padding: 6px;
+}
+
+table.table.table-bordered td ul {
+  padding-left: 15px;
+}
+
+/* Jumbotron section
+-------------------------------------------------- */
+.display-4 {
+  font-family: 'Luckiest Guy', cursive;
+}
+
+.jumbotron {
+  text-align: center;
+  margin-top: 32px;
+  background-color: white;
+}
+
+/* Navbar section
+-------------------------------------------------- */
+.navbar-light .navbar-brand {
+  font-family: 'Luckiest Guy', cursive;
+}
+
+/* Settings section
+-------------------------------------------------- */
+.settings {
+  margin-top: 50px;
+}
+.settings h1 {
+  font-size: 24px;
+}
+
+.settings button {
+  float: right;
+}
+
+/* Common Heading head title
+-------------------------------------------------- */
+.setMarket,
+.entriesForm,
+.registerForm,
+.inventoryTable,
+.addProductForm,
+.registerUserForm,
+.globalInventoryTable {
+  margin-top: 50px;
+}
+
+.setMarket h1,
+.entriesForm h1,
+.registerForm h1,
+.inventoryTable h1,
+.addProductForm h1,
+.registerUserForm h1,
+.globalInventoryTable h1 {
+  font-size: 24px;
+}
+
+/* Form section
+-------------------------------------------------- */
+.form-signin {
+  width: 100%;
+  max-width: 420px;
+  padding: 15px;
+  margin: 100 auto 0;
+}
+
+.form-label-group {
+  position: relative;
+  margin-bottom: 1rem;
+}
+
+.form-label-group input,
+.form-label-group label {
+  height: 3.125rem;
+  padding: 0.75rem;
+}
+
+.form-label-group label {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: block;
+  width: 100%;
+  margin-bottom: 0; /* Override default `<label>` margin */
+  line-height: 1.5;
+  color: #495057;
+  pointer-events: none;
+  cursor: text; /* Match the input under the label */
+  border: 1px solid transparent;
+  border-radius: 0.25rem;
+  transition: all 0.1s ease-in-out;
+}
+
+.form-label-group input::-webkit-input-placeholder {
+  color: transparent;
+}
+
+.form-label-group input::-moz-placeholder {
+  color: transparent;
+}
+
+.form-label-group input:-ms-input-placeholder {
+  color: transparent;
+}
+
+.form-label-group input::-ms-input-placeholder {
+  color: transparent;
+}
+
+.form-label-group input::placeholder {
+  color: transparent;
+}
+
+.form-label-group input:not(:-moz-placeholder-shown) {
+  padding-top: 1.25rem;
+  padding-bottom: 0.25rem;
+}
+
+.form-label-group input:not(:-ms-input-placeholder) {
+  padding-top: 1.25rem;
+  padding-bottom: 0.25rem;
+}
+
+.form-label-group input:not(:placeholder-shown) {
+  padding-top: 1.25rem;
+  padding-bottom: 0.25rem;
+}
+
+.form-label-group input:not(:-moz-placeholder-shown) ~ label {
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem;
+  font-size: 12px;
+  color: #777;
+}
+
+.form-label-group input:not(:-ms-input-placeholder) ~ label {
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem;
+  font-size: 12px;
+  color: #777;
+}
+
+.form-label-group input:not(:placeholder-shown) ~ label {
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem;
+  font-size: 12px;
+  color: #777;
+}
+
+/* Fallback for Edge
+-------------------------------------------------- */
+@supports (-ms-ime-align: auto) {
+  .form-label-group {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-direction: column-reverse;
+    flex-direction: column-reverse;
+  }
+
+  .form-label-group label {
+    position: static;
+  }
+
+  .form-label-group input::-ms-input-placeholder {
+    color: #777;
+  }
+}

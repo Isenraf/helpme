@@ -1,0 +1,17 @@
+extends base.pug
+block content
+    form.form-signin
+        .text-center.mb-4
+            h1.h3.mb-3.font-weight-normal Sign into your account
+            .alertContainer 
+
+        .form-label-group
+            input(type="text", name="contact" id="inputContact" placeholder="653367086" required autofocus).form-control
+            label(for="inputContact") Phone Number
+        
+        .form-label-group
+            input(type="password", name="contact" id="inputPassword" placeholder="Password" required).form-control
+            label(for="inputPassword") Password
+        
+        button(type="submit").btn.btn-lg.btn-primary.btn-block Sign in
+        p.mt-5.mb-3.text-muted.text-center= `&copy; 2019-${new Date().getFullYear()}`

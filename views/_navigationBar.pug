@@ -1,0 +1,32 @@
+mixin appendToNavbar(href, item)
+  li.nav-item: a(href=href).nav-link.text-white= item
+
+mixin dynamicNavBar(...items)
+  nav.navbar.navbar-expand-lg.navbar-light.bg-primary
+    a(href="#").navbar-brand help Me
+    button(type="button" data-toggle="collapse" data-target="#navbarToggler" aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation").navbar-toggler
+      span.navbar-toggler-icon
+
+    .collapse.navbar-collapse#navbarToggler
+      ul.navbar-nav.ml-md-auto
+        li.nav-item.active: a(href="#").nav-link Home 
+          span.sr-only (current)
+        each item in items
+          +appendToNavbar(`${item.split('.')[0]}`, `${item.split('.')[1]}`)
+        li.nav-item: a(href="/me").nav-link.text-white profil
+        li.nav-item: a(href="").nav-link.text-white.logout logout
+
+//- nav.navbar.navbar-expand-lg.navbar-light.bg-primary
+//-   a(href="#").navbar-brand help Me
+//-   button(type="button" data-toggle="collapse" data-target="#navbarToggler" aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation").navbar-toggler
+//-     span.navbar-toggler-icon
+
+//-   .collapse.navbar-collapse#navbarToggler
+//-     ul.navbar-nav.ml-md-auto
+//-       li.nav-item.active: a(href="#").nav-link Home 
+//-         span.sr-only (current)
+//-       li.nav-item: a(href=`/inventory/${user.town._id}`).nav-link.text-white Inventory
+//-       li.nav-item: a(href=`/userInventory/${user._id}/${user.town._id}`).nav-link.text-white personal Inventory
+//-       li.nav-item: a(href="/register").nav-link.text-white add customer
+//-       li.nav-item: a(href="/me").nav-link.text-white profil
+//-       li.nav-item: a(href="").nav-link.text-white.logout logout

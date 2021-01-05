@@ -1,0 +1,35 @@
+extends base
+include _navigationBar
+
+block content
+    +dynamicNavBar(`/inventory/${user.town._id}/${market._id}.Inventory`,
+      `/userInventory/${user._id}/${user.town._id}/${market._id}.personal Inventory`,
+      `/register.add customer`)
+
+    .container
+      .globalInventoryTable.table-responsive
+          h1= market.name.toUpperCase()
+
+          table.table.table-bordered
+            caption General Inventory
+
+            thead
+              tr
+                th(scope="col") #
+                th(scope="col") reference
+                th(scope="col") Quantity
+                th(scope="col") Sold
+                th(scope="col") Cash
+                th(scope="col") not Percieved
+                th(scope="col") Rest
+            
+            tbody
+              each invent, index in inventories
+                tr
+                  th(scope="row")= index
+                  td= invent.product.brandName
+                  td= invent.previousStock
+                  td= invent.sold
+                  td= invent.cash
+                  td= invent.notPercieved
+                  td= invent.currentStock

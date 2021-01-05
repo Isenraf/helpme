@@ -1,0 +1,14 @@
+extends base
+include _navigationBar
+
+block content
+    - let role = user.role
+
+    if role == "admin"
+        +dynamicNavBar(`/mod.daily market`, `/registerUser.add User`, `/addproduct.add Product`)
+    else if role == "prospector"
+        +dynamicNavBar(`/inventory/${user.town._id}/${market._id}.Inventory`,
+            `/userInventory/${user._id}/${user.town._id}/${market._id}.personal Inventory`,
+            `/register.add customer`)
+    else if role == "watchdog"
+        +dynamicNavBar(`/entryExit.Entries`)

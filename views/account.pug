@@ -1,0 +1,46 @@
+extends base
+include _navigationBar
+
+block content
+    - let role = user.role
+    
+    if role == "admin"
+        +dynamicNavBar(`/mod.daily market`, `/registerUser.add User`, `/addproduct.add Product`)
+    else if role == "prospector"
+        +dynamicNavBar(`/inventory/${user.town._id}/${market._id}.Inventory`,
+            `/userInventory/${user._id}/${user.town._id}/${market._id}.personal Inventory`,
+            `/register.add customer`)
+    else if role == "watchdog"
+        +dynamicNavBar(`/entryExit.Entries`)
+
+    .container
+        .settings
+            h1 Your account settings
+            form.user-data
+                .form-group
+                    label(for="inputName") Name
+                    input(type="text" value=`${user.name}` name="name").form-control#inputName
+                .form-group
+                    label(for="inputPhoneNumber") Contact address
+                    input(type="text" value=`${user.phoneNumber}` name="contact").form-control#inputPhoneNumber
+                //- .form-group
+                //-     label(for="FormControlFile1") File
+                //-     input(type="file").form-control-file#FormControlFile1
+                button(type="submit").btn.btn-danger save setting
+            
+            br
+            br
+            hr
+
+            h1 Password change
+            form.user-data-password
+                .form-group
+                    label(for="inputCurrent") Current password
+                    input(type="password"  name="current" placeholder="********").form-control#inputCurrent
+                .form-group
+                    label(for="inputNew") New password
+                    input(type="password"  name="new" placeholder="********").form-control#inputNew
+                .form-group
+                    label(for="inputConfirm") Confirm password
+                    input(type="password"  name="confirm" placeholder="********").form-control#inputConfirm
+                button(type="submit").btn.btn-danger.save-password save setting

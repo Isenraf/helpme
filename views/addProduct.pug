@@ -1,0 +1,52 @@
+extends base
+include _navigationBar
+
+block content
+    +dynamicNavBar(`/mod.daily market`, `/registerUser.add User`, `/addproduct.add Product`)
+
+    .container
+        .addProductForm
+            h1 Create new Product
+            form.newproduct-data
+                .form-row
+                    .form-group.col-md-4
+                        label(for="inputPdtName") Product Name
+                        input(type="text").form-control#inputPdtName
+                    .form-group.col-md-4
+                        label(for="inputPrice") Price
+                        input(type="Number").form-control#inputPrice
+                    .form-group.col-md-4
+                        label(for="inputBrandName") Brand Name
+                        input(type="text").form-control#inputBrandName
+                
+                .form-row
+                    .form-group.col-md-4
+                        label(for="inputModel") Model
+                        input(type="text").form-control#inputModel
+                    .form-group.col-md-4
+                        label(for="inputWarranty") Warranty In Days
+                        input(type="Number").form-control#inputWarranty
+                    .form-group.col-md-4
+                        label(for="inputFirstPay") First Pay
+                        input(type="Number").form-control#inputFirstPay
+                
+                .form-row
+                    .form-group.col-md-4
+                        label(for="inputDailyPay") Daily Pay
+                        input(type="Number").form-control#inputDailyPay
+                    .form-group.col-md-4
+                        label(for="inputCashPrice") Cash Price
+                        input(type="Number").form-control#inputCashPrice
+                    .form-group.col-md-4
+                        label(for="inputDuration") Duration
+                        input(type="Number").form-control#inputDuration
+                
+                .form-row
+                    .form-group.col-md-6
+                        label(for="inputSummary") Summary
+                        input(type="text").form-control#inputSummary
+                    .form-group.col-md-6
+                        label(for="inputDescription") Description
+                        textarea(rows="3").form-control#inputDescription
+
+                button(type="submit").btn.btn-success submit product

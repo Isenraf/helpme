@@ -1,0 +1,26 @@
+extends base
+include _navigationBar
+
+block content
+    +dynamicNavBar(`/mod.daily market`, `/registerUser.add User`, `/addproduct.add Product`)
+
+    .container
+        .setMarket
+            h1 Todays Market
+            form.market-data
+                .form-row
+                    .form-group.col-md-4
+                        label(for="inputTeamNumber") Number Teams
+                        input(type="text").form-control#inputTeamNumber
+                    
+                    .form-group.col-md-4
+                        label(for="inputMarkets") markets
+                        select.form-control#inputMarkets
+                            option(selected) choose...
+                            each market in markets
+                                option(value=`${market._id}`)= `${market.name}`
+                    .form-group.col-md-4
+                        label(for="inputTown") Town
+                        input(type="text" placeholder=`${user.town.name}` name=`${user.town._id}`  readonly).form-control#inputTown
+                
+                button(type="submit").btn.btn-success send market

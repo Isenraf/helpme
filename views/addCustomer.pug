@@ -1,0 +1,64 @@
+extends base
+include _navigationBar
+
+block content
+    +dynamicNavBar(`/inventory/${user.town._id}/${market._id}.Inventory`,
+        `/userInventory/${user._id}/${user.town._id}/${market._id}.personal Inventory`,
+        `/register.add customer`)
+    
+    .container  
+        .registerForm
+            h1 Register new customer
+            form.customer-data
+                .form-row
+                    .form-group.col-md-4
+                        label(for="inputCustomerName") Customer Name
+                        input(type="text").form-control#inputCustomerName
+                    .form-group.col-md-4
+                        label(for="inputTel") Telephone
+                        input(type="text").form-control#inputTel
+                    .form-group.col-md-4
+                        label(for="inputNcni") Ncni
+                        input(type="text").form-control#inputNcni
+                
+                .form-row
+                    .form-group.col-md-4
+                        label(for="inputMarket") market
+                        input(type="text" name=`${market._id}` placeholder=`${market.name}` readonly).form-control#inputMarket
+                    
+                    .form-group.col-md-4
+                        label(for="inputProducts") Products
+                        ul.list-group
+                            each product in products
+                                li(data-value=`${product._id}`).list-group-item #{product.name} |&nbsp;
+                                    strong quan  
+                                    span.leftArrow <ion-icon name="remove-circle"></ion-icon>
+                                    | 0
+                                    span.rightArrow <ion-icon name="add-circle"></ion-icon> |&nbsp;
+                                    
+                                    strong nonL  
+                                    span.leftArrow <ion-icon name="remove-circle"></ion-icon>
+                                    | 0
+                                    span.rightArrow <ion-icon name="add-circle"></ion-icon> |&nbsp;
+
+                                    strong cs  
+                                    span.leftArrow <ion-icon name="remove-circle"></ion-icon>
+                                    | 0
+                                    span.rightArrow <ion-icon name="add-circle"></ion-icon>
+
+                    .form-group.col-md-4
+                        label(for="inputTown") Town
+                        input(type="text" placeholder=`${user.town.name}` name=`${user.town._id}`  readonly).form-control#inputTown
+                
+                .form-row
+                    .form-group.col-md-4
+                        label(for="inputFirstPayment") First Payment
+                        input(type="text").form-control#inputFirstPayment
+                    .form-group.col-md-4
+                        label(for="inputLocation") Location Description
+                        textarea(rows="3").form-control#inputLocation
+                    .form-group.col-md-4
+                        label(for="inputInCharge") In Charge
+                        input(type="text" name=`${user._id}` placeholder=`${user.name}` readonly).form-control#inputInCharge
+
+                button(type="submit").btn.btn-success submit form

@@ -1,0 +1,58 @@
+extends base
+include _navigationBar
+
+block content
+  +dynamicNavBar(`/inventory/${user.town._id}/${market._id}.Inventory`,
+    `/userInventory/${user._id}/${user.town._id}/${market._id}.personal Inventory`,
+    `/register.add customer`)
+
+  .container
+    .inventoryTable.table-responsive
+      - let totalSum = 0;
+      - let _date = date.getDate();
+
+      h1 Personal Inventory
+
+      table.table.table-bordered
+        caption List of customers
+
+        thead
+          tr
+            th(scope="col") #
+            th(scope="col") name
+            th(scope="col") telephone
+            th(scope="col") location
+            th(scope="col") products
+            th(scope="col") cash
+            th(scope="col") not Percieved
+            th(scope="col") paid
+
+        tbody
+          each customer, index in customers
+            tr
+              th(scope="row")= index
+              td= customer.name
+              td= customer.phoneNumber
+              td= customer.locationDescription
+              td
+                ul
+                  each product in customer.products
+                    if(product.takenOnThe === _date)
+                      li=`${product.quantity} ${product.refId.brandName}`
+              td
+                ul
+                  each cs in customer.cash
+                    if(cs.takenOnThe === _date)
+                      li=`${cs.quantity} ${cs.refId.brandName}`
+              td
+                ul
+                  each notP in customer.notPercieved
+                    if(notP.takenOnThe === _date)
+                      li=`${notP.quantity} ${notP.refId.brandName}`
+              td= customer.firstPayment
+
+              - totalSum += customer.firstPayment
+
+          tr
+            th(scope="row" colspan="7") payment
+            td= totalSum

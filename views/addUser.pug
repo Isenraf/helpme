@@ -1,0 +1,49 @@
+extends base
+include _navigationBar
+
+block content
+    +dynamicNavBar(`/mod.daily market`, `/registerUser.add User`, `/addproduct.add Product`)
+
+    .container
+        .registerUserForm
+            h1 Register new User
+            form.newuser-data
+                .form-row
+                    .form-group.col-md-4
+                        label(for="inputUserName") User Name
+                        input(type="text").form-control#inputUserName
+                    .form-group.col-md-4
+                        label(for="inputTel") Telephone
+                        input(type="text").form-control#inputTel
+                    .form-group.col-md-4
+                        label(for="inputaddress") Address
+                        input(type="text").form-control#inputaddress
+
+                .form-row
+                    .form-group.col-md-4
+                        label(for="inputTown") Town
+                        select.form-control#inputTown
+                            option(selected) Choose...
+                            each town in towns
+                                option(value=`${town._id}`)= town.name
+
+                    .form-group.col-md-4
+                        label(for="inputPassword") Password
+                        input(type="password").form-control#inputPassword
+
+                    .form-group.col-md-4
+                        label(for="inputPasswordConfirm") Password Confirm
+                        input(type="password").form-control#inputPasswordConfirm
+
+                .form-row
+                    .form-group.col-md-4
+                        label(for="inputRole") Role
+                        select.form-control#inputRole
+                            option(selected) Choose...
+                            option(value="headOfStaff") headOfStaff
+                            option(value="prospector") prospector
+                            option(value="collector") collector
+                            option(value="watchdog") watchdog
+                            option(value="admin") admin
+
+                button(type="submit").btn.btn-success submit form        
