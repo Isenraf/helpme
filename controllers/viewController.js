@@ -121,7 +121,7 @@ exports.inventoryAutomation = catchAsync(async (req, res, next) => {
     // send http request for the creation of and inventory
     await axios({
       method: 'post',
-      url: `/api/v1/inventories`,
+      url: '/api/v1/inventories',
       data: {
         cash,
         sold,
