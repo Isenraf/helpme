@@ -14,7 +14,7 @@ mixin dynamicNavBar(...items)
         each item in items
           +appendToNavbar(`${item.split('.')[0]}`, `${item.split('.')[1]}`)
         li.nav-item: a(href="/me").nav-link.text-white profil
-        li.nav-item: a(href="").nav-link.text-white.logout logout
+        li.nav-item: a.nav-link.text-white.logout logout
 
 //- nav.navbar.navbar-expand-lg.navbar-light.bg-primary
 //-   a(href="#").navbar-brand help Me
