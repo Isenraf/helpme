@@ -24,7 +24,9 @@ const productRouter = require('./routes/productRoutes');
 const customerRouter = require('./routes/customerRoutes');
 const inventoryRouter = require('./routes/inventoryRoutes');
 
+// start express app
 const app = express();
+app.enable('trust proxy');
 
 // Global Variables
 app.locals.market = {};
