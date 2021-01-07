@@ -118,7 +118,7 @@ exports.inventoryAutomation = catchAsync(async (req, res, next) => {
     previousStock = query !== null ? query.currentStock : entryQ;
     currentStock = entryQ - (cash + sold + notPercieved + exitQ);
 
-    // send http request for the creation of and inventory
+    // send http request for the creation of an inventory
     await axios({
       method: 'post',
       url: '/api/v1/inventories',
