@@ -169,7 +169,7 @@ exports.getAddProduct = (req, res) => {
 
 exports.getRegistration = catchAsync(async (req, res, next) => {
   // Get products, market, town data from their collection.
-  const products = await Product.find();
+  const products = await Product.find({ active: true });
 
   res.status(200).render('addCustomer', {
     title: 'Add customer',
