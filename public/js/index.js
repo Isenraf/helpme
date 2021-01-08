@@ -19,6 +19,7 @@ const userPasswordForm = document.querySelector('.user-data-password');
 const customerDataForm = document.querySelector('.customer-data');
 const marketForm = document.querySelector('.market-data');
 const entryForm = document.querySelector('.entries-data');
+const searchForm = document.querySelector('.searchbar');
 const newUserData = document.querySelector('.newuser-data');
 const newProductData = document.querySelector('.newproduct-data');
 
@@ -46,6 +47,11 @@ if (userDataForm) {
     const phoneNumber = document.getElementById('inputPhoneNumber').value;
     updateSettings({ name, phoneNumber }, 'data');
   });
+}
+
+if (searchForm) {
+  const result = document.querySelector('.searchResult');
+  searchForm.addEventListener('input', e => {});
 }
 
 if (userPasswordForm) {

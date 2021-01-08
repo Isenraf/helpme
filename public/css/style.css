@@ -67,6 +67,13 @@ table.table.table-bordered td ul {
   font-size: 24px;
 }
 
+/* Search section
+-------------------------------------------------- */
+.searchbarContainer {
+  margin: 30px auto;
+  padding: 15px;
+}
+
 /* Form section
 -------------------------------------------------- */
 .form-signin {
