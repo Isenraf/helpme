@@ -7,9 +7,10 @@ block content
         `/register.add customer`)
     
     .container  
-        .searchbarContainer
-            input(type="search" placeholder="Search" aria-label="Search").form-control.mr-sm-2.searchbar
+         .searchbarContainer
+            input(type="search" placeholder="Search..." aria-label="Search" data-town=`${user.town._id}` data-market=`${market._id}`).form-control.mr-sm-2.searchbar
         .searchResult
+        
         .registerForm
             h1 Register new customer
             form.customer-data

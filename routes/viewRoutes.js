@@ -16,6 +16,12 @@ router.get(
 router.get('/me', authController.isLoggedIn, viewController.getAccount);
 
 router.get(
+  '/search/:townId/:marketId/:searchQuery',
+  authController.isLoggedIn,
+  viewController.getRequestedCustomer
+);
+
+router.get(
   '/register',
   authController.isLoggedIn,
   viewController.setMarket,

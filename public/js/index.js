@@ -6,7 +6,8 @@ import {
   setMarket,
   sendEntries,
   sendUserinfo,
-  sendProductinfo
+  sendProductinfo,
+  searchCustomer
 } from './login';
 import { updateSettings } from './updateSettings';
 import { signUpCustomer } from './signup';
@@ -19,7 +20,7 @@ const userPasswordForm = document.querySelector('.user-data-password');
 const customerDataForm = document.querySelector('.customer-data');
 const marketForm = document.querySelector('.market-data');
 const entryForm = document.querySelector('.entries-data');
-const searchForm = document.querySelector('.searchbar');
+const searchBar = document.querySelector('.searchbar');
 const newUserData = document.querySelector('.newuser-data');
 const newProductData = document.querySelector('.newproduct-data');
 
@@ -49,9 +50,25 @@ if (userDataForm) {
   });
 }
 
-if (searchForm) {
-  const result = document.querySelector('.searchResult');
-  searchForm.addEventListener('input', e => {});
+if (searchBar) {
+  const townId = searchBar.getAttribute('data-town');
+  const marketId = searchBar.getAttribute('data-market');
+
+  searchBar.addEventListener('input', e => {
+    const query = e.target.value;
+    const resultBox = document.querySelector('.searchResult');
+    if (query !== '' && marketId !== 'undefined') {
+      searchCustomer(townId, marketId, query).then(result => {
+        let resultString = '';
+        result.forEach(customer => {
+          resultString += `<div><a href="#">${customer.phoneNumber}</a></div>`;
+        });
+        resultBox.innerHTML = resultString;
+      });
+    }
+
+    if (query === '') resultBox.innerHTML = '';
+  });
 }
 
 if (userPasswordForm) {

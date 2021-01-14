@@ -144,3 +144,19 @@ export const sendUserinfo = async (
     showAlert('danger', err.response.data.message);
   }
 };
+
+export const searchCustomer = async (townId, marketId, query) => {
+  try {
+    const res = await axios({
+      method: 'get',
+      url: `/search/${townId}/${marketId}/${query}`
+    });
+
+    if (res.data.status === 'success') {
+      console.log('successfull');
+      return res.data.data;
+    }
+  } catch (err) {
+    return err;
+  }
+};

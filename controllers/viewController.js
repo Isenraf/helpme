@@ -228,3 +228,19 @@ exports.getEntryExit = catchAsync(async (req, res, next) => {
 
   res.status(200).render('entries', { title: 'Today Entries', products });
 });
+
+exports.getRequestedCustomer = catchAsync(async (req, res, next) => {
+  // console.log(req.params.marketId, req.params.townId, req.params.searchQuery);
+  // { <field>: { $regex: 'pattern', $options: '<options>' } }
+  const data = await Customer.find({
+    phoneNumber: {
+      $regex: `^${req.params.searchQuery}`,
+      $options: 'i'
+    },
+    town: req.params.townId,
+    market: req.params.marketId
+  });
+
+  // console.log(data);
+  res.status(200).json({ status: 'success', data });
+});
