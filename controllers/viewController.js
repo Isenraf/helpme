@@ -241,6 +241,5 @@ exports.getRequestedCustomer = catchAsync(async (req, res, next) => {
     market: req.params.marketId
   });
 
-  // console.log(data);
   res.status(200).json({ status: 'success', data });
 });
