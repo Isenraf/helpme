@@ -28,6 +28,12 @@ router.get(
 );
 
 router.get(
+  '/custpage/:phone',
+  authController.isLoggedIn,
+  viewController.getCustomerPage
+);
+
+router.get(
   '/register',
   authController.isLoggedIn,
   viewController.setMarket,
