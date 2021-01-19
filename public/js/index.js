@@ -65,7 +65,9 @@ if (searchBar) {
       searchCustomer(townId, marketId, query).then(result => {
         let resultString = '';
         result.forEach(customer => {
-          resultString += `<div><a href="#">${customer.phoneNumber}</a></div>`;
+          resultString += `<div><a href='/custpage/${customer.phoneNumber}'>${
+            customer.name
+          }</a></div>`;
         });
         resultBox.innerHTML = resultString;
       });
