@@ -53,7 +53,8 @@ table.table.table-bordered td ul {
 .inventoryTable,
 .addProductForm,
 .registerUserForm,
-.globalInventoryTable {
+.globalInventoryTable,
+.updatecustomerbasketform {
   margin-top: 50px;
 }
 
@@ -63,7 +64,8 @@ table.table.table-bordered td ul {
 .inventoryTable h1,
 .addProductForm h1,
 .registerUserForm h1,
-.globalInventoryTable h1 {
+.globalInventoryTable h1,
+.updatecustomerbasketform h1 {
   font-size: 24px;
 }
 

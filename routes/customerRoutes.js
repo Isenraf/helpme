@@ -15,4 +15,6 @@ router
   .patch(customerController.updateCustomer)
   .delete(customerController.deleteCustomer);
 
+router.patch('/:id/:products/:identifier', customerController.updateArrayField);
+
 module.exports = router;

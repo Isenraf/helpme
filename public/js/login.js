@@ -160,3 +160,24 @@ export const searchCustomer = async (townId, marketId, query) => {
     return err;
   }
 };
+
+export const updateCustomerBasket = async (
+  products,
+  customerId,
+  identifier
+) => {
+  try {
+    const res = await axios({
+      method: 'patch',
+      url: `/api/v1/customers/${customerId}/${JSON.stringify(
+        products
+      )}/${identifier}`
+    });
+
+    if (res.data.status === 'success') {
+      showAlert('success', 'updated successfully');
+    }
+  } catch (err) {
+    showAlert('danger', err.response.data.message);
+  }
+};

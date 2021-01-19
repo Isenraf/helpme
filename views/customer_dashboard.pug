@@ -1,0 +1,38 @@
+extends base
+include _navigationBar
+
+block content
+    +dynamicNavBar(`/inventory/${user.town._id}/${market._id}.Inventory`,
+        `/userInventory/${user._id}/${user.town._id}/${market._id}.personal Inventory`,
+        `/register.add customer`)
+
+    .container
+        .updatecustomerbasketform
+            h1 Add Product to customer basket
+
+        form.updatecustomerbasket-data
+            .form-row
+                .form-group.col-md-4
+                    label(for="inputPayment") Payment
+                    input(type="Number").form-control#inputPayment
+                .form-group.col-md-4
+                    label(for="inputProducts") Products
+                    ul.list-group
+                        each product in products
+                            li(data-userId=`${user._id}` data-id =`${customerInfo._id}` data-value=`${product._id}`).list-group-item #{product.name} |&nbsp;
+                                strong quan  
+                                span.leftArrow <ion-icon name="remove-circle"></ion-icon>
+                                | 0
+                                span.rightArrow <ion-icon name="add-circle"></ion-icon> |&nbsp;
+
+                                strong nonL  
+                                span.leftArrow <ion-icon name="remove-circle"></ion-icon>
+                                | 0
+                                span.rightArrow <ion-icon name="add-circle"></ion-icon> |&nbsp;
+
+                                strong cs  
+                                span.leftArrow <ion-icon name="remove-circle"></ion-icon>
+                                | 0
+                                span.rightArrow <ion-icon name="add-circle"></ion-icon>
+
+            button(type="submit").btn.btn-success add to basket

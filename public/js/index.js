@@ -7,7 +7,8 @@ import {
   sendEntries,
   sendUserinfo,
   sendProductinfo,
-  searchCustomer
+  searchCustomer,
+  updateCustomerBasket
 } from './login';
 import { updateSettings } from './updateSettings';
 import { signUpCustomer } from './signup';
@@ -18,6 +19,9 @@ const logOutBtn = document.querySelector('.logout');
 const userDataForm = document.querySelector('.user-data');
 const userPasswordForm = document.querySelector('.user-data-password');
 const customerDataForm = document.querySelector('.customer-data');
+const updatecustomerbasketForm = document.querySelector(
+  '.updatecustomerbasket-data'
+);
 const marketForm = document.querySelector('.market-data');
 const entryForm = document.querySelector('.entries-data');
 const searchBar = document.querySelector('.searchbar');
@@ -177,6 +181,49 @@ if (entryForm) {
     });
 
     sendEntries(auth, entries, exits, market);
+  });
+}
+
+if (updatecustomerbasketForm) {
+  customSelectField();
+
+  const handedMoney = document.getElementById('inputPayment').value;
+  updatecustomerbasketForm.addEventListener('submit', e => {
+    e.preventDefault();
+
+    let elValue;
+    let quan;
+    let nonL;
+    let cs;
+
+    const listGroup = document.querySelectorAll('li.list-group-item');
+    listGroup.forEach(el => {
+      const custId = el.getAttribute('data-id');
+      elValue = el.getAttribute('data-value');
+      quan = el.children[1].nextSibling.textContent;
+      nonL = el.children[4].nextSibling.textContent;
+      cs = el.children[7].nextSibling.textContent;
+
+      // Fill array with object
+      if (quan > 0)
+        updateCustomerBasket(
+          { refId: `${elValue}`, quantity: quan },
+          custId,
+          'products'
+        );
+      if (nonL > 0)
+        updateCustomerBasket(
+          { refId: `${elValue}`, quantity: nonL },
+          custId,
+          'notPercieved'
+        );
+      if (cs > 0)
+        updateCustomerBasket(
+          { refId: `${elValue}`, quantity: cs },
+          custId,
+          'cash'
+        );
+    });
   });
 }
 

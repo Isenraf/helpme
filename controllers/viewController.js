@@ -179,10 +179,19 @@ exports.getRegistration = catchAsync(async (req, res, next) => {
 
 exports.getUserInventory = catchAsync(async (req, res, next) => {
   const customers = await Customer.find({
-    inChargeOf: req.params.usId,
-    town: req.params.tId,
-    market: req.params.mId,
-    createdAt: date.getDate()
+    $or: [
+      {
+        town: req.params.tId,
+        market: req.params.mId,
+        'products.takenOnThe': date.getDate()
+      },
+      {
+        inChargeOf: req.params.usId,
+        town: req.params.tId,
+        market: req.params.mId,
+        createdAt: date.getDate()
+      }
+    ]
   });
 
   res.status(200).render('userInventory', {
@@ -242,4 +251,17 @@ exports.getRequestedCustomer = catchAsync(async (req, res, next) => {
   });
 
   res.status(200).json({ status: 'success', data });
+});
+
+exports.getCustomerPage = catchAsync(async (req, res, next) => {
+  const customerInfo = await Customer.findOne({
+    phoneNumber: req.params.phone
+  });
+  // Get products, market, town data from their collection.
+  const products = await Product.find({ active: true });
+  res.status(200).render('customer_dashboard', {
+    title: `${customerInfo.name}`,
+    customerInfo,
+    products
+  });
 });
