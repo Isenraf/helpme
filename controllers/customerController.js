@@ -1,4 +1,5 @@
 const Customer = require('../models/customerModel');
+const catchAsync = require('./../utils/catchAsync');
 const factory = require('./handlerFactory');
 
 // CRUD operations
